@@ -52,6 +52,7 @@ def vote():
         # if this string is in the reponse, the request was successful
         if("Dein Jugendwort ist jetzt bei uns aufgenommen." in res.text):
             print("Vote erfolgreich")
+        
 
 if __name__ == "__main__":
     # init argparse
