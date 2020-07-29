@@ -49,7 +49,7 @@ jobs:
     - name: Trigger next vote
       run: |
         echo GITHUB_REPOSITORY
-        curl -X POST https://api.github.com/repos/${{ secrets.GITHUB_REPOSITORY }}/dispatches \
+        curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches \
         -H 'Accept: application/vnd.github.everest-preview+json' \
         -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
         --data '{"event_type": "vote"}'
