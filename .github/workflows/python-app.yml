@@ -1,7 +1,8 @@
 name: Vote once
 
-on: [push]
-
+on: 
+  schedule:
+    - cron:  '* * * * *'
 jobs:
   build:
 
