@@ -4,6 +4,7 @@ on:
   fork:
   push:
   workflow_dispatch:
+    types: vote
   #schedule:
   #  - cron:  '*/5 * * * *' # every 5 minutes ist the smallest possible number -> not viable
 jobs:
@@ -52,5 +53,5 @@ jobs:
         echo "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches"
         curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches \
         -H 'Accept: application/vnd.github.everest-preview+json' \
-        -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 
-      # --data '{"event_type": "vote"}'
+        -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
+        --data '{"event_type": "vote"}'
