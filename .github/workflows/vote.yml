@@ -30,18 +30,26 @@ jobs:
     - name: Run once
       run: python3 main.py
     
-    - name: Write to text file
-      run: echo "Zensurensohn" >> votes.txt
+    #- name: Write to text file
+    #  run: echo "Zensurensohn" >> votes.txt
+    
+    #- name: Commit files
+    #  run: |
+    #    git config --local user.email "vote@bot.de"
+    #    git config --local user.name "Vote Bot"
+    #    git add -A
+    #    git commit -m "triggering next vote" -a
+    
+    #- name: Push changes
+    #  uses: ad-m/github-push-action@master
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    branch: master#
     
     - name: Commit files
       run: |
-        git config --local user.email "vote@bot.de"
-        git config --local user.name "Vote Bot"
-        git add -A
-        git commit -m "triggering next vote" -a
-    
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: master
+        echo GITHUB_REPOSITORY
+        curl -X POST https://api.github.com/repos/${{ secrets.GITHUB_REPOSITORY }}/dispatches \
+        -H 'Accept: application/vnd.github.everest-preview+json' \
+        -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
+    #--data '{"event_type": "$CUSTOM_ACTION_NAME"}'
