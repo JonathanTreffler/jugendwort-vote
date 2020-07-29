@@ -13,7 +13,7 @@ WORD = "Zensurensohn"
 successful_votes = 0
 failed_votes = 0
 
-def vote_thread():
+def vote():
     global successful_votes
     global failed_votes
     global threads_running
@@ -103,8 +103,10 @@ if __name__ == "__main__":
     # print: starting threads
     print("[*] Alles Nötige wurde vorbereitet.")
     # start info_msg_thread
-    threading.Thread(target=info_msg_thread, args=[]).start()
+    #threading.Thread(target=info_msg_thread, args=[]).start()
 
     # start vote_threads
-    try:
-        threading.Thread(target=vote_thread, args=[]).start()
+    #try:
+    #    threading.Thread(target=vote, args=[]).start()
+    vote()
+    
