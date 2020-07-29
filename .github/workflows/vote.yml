@@ -3,6 +3,7 @@ name: Vote once
 on:
   fork:
   push:
+  workflow_dispatch:
   #schedule:
   #  - cron:  '*/5 * * * *' # every 5 minutes ist the smallest possible number -> not viable
 jobs:
