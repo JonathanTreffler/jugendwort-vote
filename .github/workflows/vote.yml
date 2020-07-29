@@ -1,6 +1,8 @@
 name: Vote once
 
-on: 
+on:
+  fork:
+  push:
   schedule:
     - cron:  '* * * * *'
 jobs:
