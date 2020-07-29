@@ -91,9 +91,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # setting args
-    if args.threads:
-        THREAD_COUNT = args.threads
-
     if args.url:
         SURVEY_URL = args.url
 
