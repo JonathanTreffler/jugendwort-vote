@@ -3,8 +3,8 @@ name: Vote once
 on:
   fork:
   push:
-  schedule:
-    - cron:  '* * * * *'
+  #schedule:
+  #  - cron:  '*/5 * * * *' # every 5 minutes ist the smallest possible number -> not viable
 jobs:
   build:
 
@@ -25,3 +25,19 @@ jobs:
 
     - name: Run once
       run: python3 main.py
+    
+    - name: Write to text file
+      run: echo "Zensurensohn \n" >> votes.txt
+    
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "triggering next vote" -a
+    
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
