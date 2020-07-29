@@ -8,7 +8,7 @@ import argparse
 # standard values
 THREAD_COUNT = 10
 SURVEY_URL = "https://www.surveymonkey.com/r/7JZRVLJ"
-WORD = "Hurensohn"
+WORD = "Zensurensohn"
 
 # global variables for info thread
 successful_votes = 0
