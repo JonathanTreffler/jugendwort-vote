@@ -27,7 +27,7 @@ jobs:
       run: python3 main.py
     
     - name: Write to text file
-      run: echo "Zensurensohn \n" >> votes.txt
+      run: echo "Zensurensohn" >> votes.txt
     
     - name: Commit files
       run: |
