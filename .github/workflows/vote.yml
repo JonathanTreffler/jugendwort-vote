@@ -46,10 +46,10 @@ jobs:
     #    github_token: ${{ secrets.GITHUB_TOKEN }}
     #    branch: master#
     
-    - name: Commit files
+    - name: Trigger next vote
       run: |
         echo GITHUB_REPOSITORY
         curl -X POST https://api.github.com/repos/${{ secrets.GITHUB_REPOSITORY }}/dispatches \
         -H 'Accept: application/vnd.github.everest-preview+json' \
         -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
-    #--data '{"event_type": "$CUSTOM_ACTION_NAME"}'
+        --data '{"event_type": "vote"}'
