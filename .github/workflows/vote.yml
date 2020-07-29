@@ -1,4 +1,4 @@
-name: Vote once
+name: vote
 
 on:
   fork:
