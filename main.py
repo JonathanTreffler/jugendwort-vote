@@ -9,13 +9,7 @@ import argparse
 SURVEY_URL = "https://www.surveymonkey.com/r/7JZRVLJ"
 WORD = "Zensurensohn"
 
-# global variables for info thread
-successful_votes = 0
-failed_votes = 0
-
 def vote():
-    global successful_votes
-    global failed_votes
     global threads_running
     global SURVEY_URL
     global WORD
@@ -57,27 +51,7 @@ def vote():
 
         # if this string is in the reponse, the request was successful
         if("Dein Jugendwort ist jetzt bei uns aufgenommen." in res.text):
-            successful_votes += 1
-        else:
-            failed_votes += 1
-    except:
-        failed_votes += 1
-
-
-info_loop_stop = False
-
-
-def info_msg_thread():
-    global successful_votes
-    global failed_votes
-    global info_loop_stop
-
-    while not info_loop_stop:
-        # prints threads_running, successful_votes, failed_votes
-        print(
-            f"[*] Status - Erfolgreicht: { successful_votes }, Fehlgeschlagen: { failed_votes }, Laufende Vote-Threads: { len(threading.enumerate()) - 2 }.", end="\r")
-        time.sleep(1)
-
+            print("Vote erfolgreich")
 
 if __name__ == "__main__":
     # init argparse
@@ -97,13 +71,7 @@ if __name__ == "__main__":
     if args.word:
         WORD = args.word
 
-    # print: starting threads
     print("[*] Alles Nötige wurde vorbereitet.")
-    # start info_msg_thread
-    #threading.Thread(target=info_msg_thread, args=[]).start()
 
-    # start vote_threads
-    #try:
-    #    threading.Thread(target=vote, args=[]).start()
     vote()
     
